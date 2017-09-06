@@ -7,7 +7,7 @@ export AWS_DEFAULT_OUTPUT=text
 
 greet() {
     hello=$(aws iam get-user --query 'User.UserName')
-    echo "Greetings, $hello/${USER}!"
+    echo "Greetings, $hello/${USERALT}!"
 }
 
 deploy_hq(){
@@ -29,7 +29,7 @@ deploy_hq(){
         $REMOTE_USER@$REMOTE_HOST:/tmp/
 
     ssh -A $REMOTE_USER@$REMOTE_HOST "bash /tmp/remote-execution.sh >>/tmp/pre.out 2>>/tmp/pre.err"
-    ssh -A $REMOTE_USER@$REMOTE_HOST 
+    ssh -A $REMOTE_USER@$REMOTE_HOST
 }
 
 deploy_tag(){
@@ -153,7 +153,7 @@ test_vm() {
         "env" \
         "ls -la /home/docker/.ssh"; do
         echo "=== $cmd ==="
-        echo "$cmd" | 
+        echo "$cmd" |
             ssh -A -q \
                 -o "UserKnownHostsFile /dev/null" \
                 -o "StrictHostKeyChecking=no" \
@@ -196,10 +196,10 @@ suggest_amis() {
 }
 
 get_token() {
-    if [ -z $USER ]; then
+    if [ -z $USERALT ]; then
         export USER=anonymous
     fi
-    date +%Y-%m-%d-%H-%M-$USER
+    date +%Y-%m-%d-%H-%M-$USERALT
 }
 
 get_ami() {

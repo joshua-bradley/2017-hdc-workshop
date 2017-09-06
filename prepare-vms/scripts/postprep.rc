@@ -61,7 +61,7 @@ ipv4 = open("/tmp/ipv4").read()
 
 # Add a "docker" user with password "training"
 system("sudo useradd -d /home/docker -m -s /bin/bash docker")
-system("echo docker:training | sudo chpasswd")
+system("echo docker:whale-trainer | sudo chpasswd")
 
 # Helper for Docker prompt.
 system("""sudo tee /usr/local/bin/docker-prompt <<SQRL
@@ -203,4 +203,3 @@ pssh "grep docker@ /home/docker/.ssh/authorized_keys \
 
 # On node1, create and deploy TLS certs using Docker Machine
 #pssh "if grep -q node1 /tmp/node; then grep ' node' /etc/hosts | xargs -n2 sudo -H -u docker docker-machine create -d generic --generic-ssh-user docker --generic-ip-address; fi"
-

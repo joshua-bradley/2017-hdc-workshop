@@ -7,7 +7,7 @@ url: http://container.training/ # moreinfo link printed on cards
 
 #engine_version: experimental.docker.com #extra features that may change/runaway
 #engine_version: test.docker.com
-engine_version: get.docker.com #prod release
+engine_version: stable #prod release
 compose_version: 1.16.1
 machine_version: 0.12.2
 swarm_version: 1.2.8

@@ -138,16 +138,14 @@ class: in-person
 
 ## Intros
 
-- Hello! We are
-  AJ ([@s0ulshake](https://twitter.com/s0ulshake))
-  &
-  Jérôme ([@jpetazzo](https://twitter.com/jpetazzo))
-
+Hello! I am Joshua ([github:joshua-bradley](https://github.com/joshua-bradley))
+* docker certified trainer
+* building docker based container solutions since 2015
 --
 
 class: in-person
 
-- This is our collective Docker knowledge:
+- This is my collective Docker knowledge:
 
   ![Bell Curve](bell-curve.jpg)
 
@@ -169,7 +167,7 @@ class: in-person
 - Agenda:
 -->
 
-<!--
+
 
 .small[
 - 09:00-10:30 part 1
@@ -182,8 +180,8 @@ class: in-person
 - 16:00-16:01 Q&A
 ]
 
--->
 
+<!--
 - The tutorial will run from 9:00am to 12:20pm
 
 - This will be fast-paced, but DON'T PANIC!
@@ -198,23 +196,21 @@ class: in-person
 
 - Live feedback, questions, help on [Gitter](chat)
 
-???
-
+??? -->
+---
 class: in-person
 
 ## Disclaimer
 
-- This will be slightly different from the posted abstract
+- This may be slightly different from the posted abstract
 
-- Lots of things happened between the CFP and today
-
-  - Docker 1.13
+- Lots of things may have happened between the CFP and today
 
   - Docker 17.03
 
-- There is enough content here for a whole day
+  - Docker 17.06
 
-- We will cover about a half of the whole program
+- There is enough content here for a whole day
 
 - And I'll give you ways to continue learning on your own, should you choose to!
 
@@ -290,11 +286,11 @@ class: in-person
 
 class: in-person
 
-## Chapter 2: scaling out our app on Swarm
+## Chapter 2: [Scaling out our app on Swarm](#scaling-out)
 
 - Creating our first Swarm
 
-- Docker Machine
+<!-- - Docker Machine -->
 
 - Running our first Swarm service
 
@@ -312,7 +308,7 @@ class: in-person
 
 class: in-person
 
-## Chapter 3: operating the Swarm
+## Chapter 3: [Operating the Swarm](#ots)
 
 - Breaking into an overlay network
 
@@ -322,15 +318,15 @@ class: in-person
 
 - (Secrets management and encryption at rest)
 
-- [Centralized logging](#logging)
-
-- Metrics collection
-
 ---
 
 class: in-person
 
-## Chapter 4: bonus material
+## Chapter 4: [bonus material](#bonus)
+
+- Centralized logging
+
+- Metrics collection
 
 - Dealing with stateful services
 
@@ -355,8 +351,8 @@ class: in-person
   [Git BASH](https://git-for-windows.github.io/), or
   [MobaXterm](http://mobaxterm.mobatek.net/)
 
-- For self-paced learning: SSH is not necessary if you use
-  [Play-With-Docker](http://www.play-with-docker.com/)
+<!-- - For self-paced learning: SSH is not necessary if you use
+  [Play-With-Docker](http://www.play-with-docker.com/) -->
 
 - Some Docker knowledge
 
@@ -377,8 +373,8 @@ class: in-person, extra-details
 - [Gitter](https://gitter.im/) account
   <br/>(to join the conversation during the workshop)
 
-- [Slack](https://community.docker.com/registrations/groups/4316) account
-  <br/>(to join the conversation after the workshop)
+<!-- - [Slack](https://community.docker.com/registrations/groups/4316) account
+  <br/>(to join the conversation after the workshop) -->
 
 - [Docker Hub](https://hub.docker.com) account
   <br/>(it's one way to distribute images on your Swarm cluster)
@@ -412,7 +408,7 @@ class: extra-details
 .exercise[
 
 - This is the stuff you're supposed to do!
-- Go to [container.training](http://container.training/) to view these slides
+- Go to [slides](http://container.training/) to view these slides
 - Join the [chat room](chat)
 
 ]
@@ -493,7 +489,7 @@ wait
 
 ---
 
-class: in-person
+class: self-paced
 
 ## If doing or re-doing the workshop on your own ...
 
@@ -506,6 +502,8 @@ class: self-paced
 - Use [Play-With-Docker](http://www.play-with-docker.com/)!
 
 --
+
+class: self-paced
 
 - Main differences:
 
@@ -602,9 +600,9 @@ You are welcome to use the method that you feel the most comfortable with.
 
 ## Brand new versions!
 
-- Engine 17.05
-- Compose 1.12
-- Machine 0.11
+- Engine 17.06
+- Compose 1.16.0
+- Machine 0.12.2
 
 .exercise[
 
@@ -619,7 +617,7 @@ You are welcome to use the method that you feel the most comfortable with.
 
 ---
 
-## Wait, what, 17.05 ?!?
+## Wait, what, 17.06 ?!?
 
 --
 
@@ -705,16 +703,16 @@ Part 1
 # Our sample application
 
 - Visit the GitHub repository with all the materials of this workshop:
-  <br/>https://github.com/jpetazzo/orchestration-workshop
+  <br/>https://github.com/joshua-bradley/orchestration-workshop
 
 - The application is in the [dockercoins](
-  https://github.com/jpetazzo/orchestration-workshop/tree/master/dockercoins)
+  https://github.com/joshua-bradley/orchestration-workshop/tree/master/dockercoins)
   subdirectory
 
 - Let's look at the general layout of the source code:
 
   there is a Compose file [docker-compose.yml](
-  https://github.com/jpetazzo/orchestration-workshop/blob/master/dockercoins/docker-compose.yml) ...
+  https://github.com/joshua-bradley/orchestration-workshop/blob/master/dockercoins/docker-compose.yml) ...
 
   ... and 4 other services, each in its own directory:
 
@@ -808,7 +806,7 @@ class: pic
 
 - Clone the repository on `node1`:
   ```bash
-  git clone git://github.com/jpetazzo/orchestration-workshop
+  git clone git://github.com/joshua-bradley/orchestration-workshop
   ```
 
 ]
@@ -1163,6 +1161,7 @@ Note: this is a fiction! We have enough entropy. But we need a pretext to scale 
 ---
 
 class: title
+name: scaling-out
 
 Scaling out
 
@@ -1392,12 +1391,12 @@ class: advertise-addr
 - If your nodes have multiple IP addresses, pick an address which is reachable
   *by every other node* of the Swarm
 
-- If you are using [play-with-docker](http://play-with-docker.com/), use the IP
-  address shown next to the node name
+<!-- - If you are using [play-with-docker](http://play-with-docker.com/), use the IP
+  address shown next to the node name -->
 
-  .small[(This is the address of your node on your private internal overlay network.
+  <!-- .small[(This is the address of your node on your private internal overlay network.
   The other address that you might see is the address of your node on the
-  `docker_gwbridge` network, which is used for outbound traffic.)]
+  `docker_gwbridge` network, which is used for outbound traffic.)] -->
 
 Examples:
 
@@ -2090,7 +2089,7 @@ class: self-paced
 
 ---
 
-## What would McGyver do?
+## What would MacGyver do?
 
 - If some of your machines are more than 10ms away from each other,
   <br/>
@@ -2298,7 +2297,7 @@ With older versions, you can use e.g.: `watch docker service ps <serviceID>`
 
   - requests coming on the public port are load balanced across all instances.
 
-- This is achieved with option `-p/--publish`; as an approximation:
+- This is achieved with option `-p or --publish`; as an approximation:
 
   `docker run -p → docker service create -p`
 
@@ -3440,8 +3439,9 @@ class: extra-details
 ---
 
 class: title, in-person
+name: ots
 
-Operating the Swarm
+# Operating the Swarm
 
 ---
 
@@ -4086,9 +4086,8 @@ The ngrep container will display one `#` per packet traversing the network inter
 
 When you do the `curl`, you should see the HTTP request in clear text in the output.
 
----
-
-class: ipsec, extra-details
+<!--
+ class: ipsec, extra-details
 
 ## If you are using Play-With-Docker, Vagrant, etc.
 
@@ -4099,7 +4098,7 @@ class: ipsec, extra-details
 - The other one will be used for internode traffic
 
 - You might have to adapt/relaunch the `ngrep` command to specify the right one!
-
+-->
 ---
 
 class: ipsec
@@ -4923,7 +4922,7 @@ class: namespaces
 
 ---
 
-class: namespaces 
+class: namespaces
 
 ## Checking that User Namespaces are enabled
 
@@ -5231,6 +5230,11 @@ while you disabled autolock), they still need the previous unlock key to get bac
 
 For more information about locking, you can check the [upcoming documentation](https://github.com/docker/docker.github.io/pull/694).
 
+---
+class: title, in-person
+name: bonus
+
+# Bonus Material
 ---
 
 name: logging
@@ -6126,7 +6130,7 @@ class: snap
 
 ## Starting a daemon through SSH
 
-.warning[Hackety hack ahead!]
+.warning[Hackery hack ahead!]
 
 - We will create a *global service*
 
@@ -7781,7 +7785,8 @@ AJ ([@s0ulshake](https://twitter.com/s0ulshake)) — *For hire!*
       var slideshow = remark.create({
         ratio: '16:9',
         highlightSpans: true,
-        excludedClasses: ["in-person", "elk-auto", "prom-auto"]
+        excludedClasses: ["self-paced", "docker-machine", "elk-manual", "snap", "prom-manual"]
+        //excludedClasses: ["in-person", "elk-auto", "prom-auto"]
         //excludedClasses: ["self-paced", "extra-details", "advertise-addr", "docker-machine", "netshoot", "sbt", "ipsec", "node-info", "swarmtools", "secrets", "encryption-at-rest", "elk-manual", "snap", "prom-manual"]
       });
     </script>
