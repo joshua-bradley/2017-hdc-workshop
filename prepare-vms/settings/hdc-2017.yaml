@@ -3,7 +3,7 @@
 workshop_name: Docker Orchestration
 workshop_short_name: orchestration
 repo: https://github.com/joshua-bradley/orchestration-workshop
-url: http://container.training/ # moreinfo link printed on cards
+url: http://138.197.220.25:8080/ # moreinfo link printed on cards
 
 #engine_version: experimental.docker.com #extra features that may change/runaway
 #engine_version: test.docker.com
@@ -18,7 +18,7 @@ instance_password: whale-trainer
 
 # 12 per page works well, but is quite small text
 clustersize: 5  # Number of VMs per cluster
-pagesize: 12    # Number of cards to print per page
+pagesize: 1    # Number of cards to print per page
 
 background_image: https://raw.githubusercontent.com/joshua-bradley/orchestration-workshop/master/prepare-vms/media/swarm.png
 

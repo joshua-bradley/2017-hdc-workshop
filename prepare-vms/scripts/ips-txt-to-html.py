@@ -63,7 +63,7 @@ div {{
     border: 1px dotted black;
     width: 27%;
     padding: 6% 2.5% 2.5% 2.5%;
-    font-size: x-small;
+    font-size: x-large;
     background-image: url("{background_image}");
     background-size: 13%;
     background-position-x: 50%;
